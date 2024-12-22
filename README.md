@@ -41,7 +41,9 @@ _Este repositorio contiene un script diseñado para detectar objetos en tiempo r
 
 9. Debes agregar a la Carpeta `credentials` el archivo `credentials.json` que se descarga al habilitar la API de Google Vision.
 
-12. Con la API configurada, se puede ejecutar el script.
+10. En la linea 6 del archivo `main.py` se debe agregar la ruta completa del archivo `credentials.json`.
+
+11. Con la API configurada, se puede ejecutar el script.
     ```bash
     python main.py
     ```

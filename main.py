@@ -3,7 +3,7 @@ from google.cloud import vision
 import threading
 import time
 import os
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "C:/Users/vicen/OneDrive/Escritorio/AlarApps/demo-detector-epp/credentials/diesel-charge-440421-a2-04bb46321270.json" # Path completo del archivo json
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "" # Path completo del archivo json
 
 # Configuración del cliente de Google Vision
 client = vision.ImageAnnotatorClient()
