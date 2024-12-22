@@ -22,9 +22,10 @@ print("Authentication successful. Client initialized.")
 # Variable to store recent results
 latest_results = []
 lock = threading.Lock()  # Controls access to results
+helmet_keywords = ["helmet", "casco"]
 
 def process_frame(frame):
-    """Processes a frame directly from memory using Google Vision."""
+    """Processes a frame directly from memory with Google Vision."""
     try:
         # Convert the OpenCV frame to bytes
         _, buffer = cv2.imencode('.jpg', frame)
@@ -34,23 +35,46 @@ def process_frame(frame):
         image = vision.Image(content=content)
         response = client.object_localization(image=image)
 
-        # Process results
-        results = [(obj.name, obj.score) for obj in response.localized_object_annotations]
+        # Process the results
+        results = [
+            (obj.name, obj.score, obj.bounding_poly)
+            for obj in response.localized_object_annotations
+        ]
 
-        # Update the most recent results
+        helmet_detected = False
         with lock:
             latest_results.clear()
-            latest_results.extend(results)
+            for name, score, bounding_poly in results:
+                if any(keyword in name.lower() for keyword in helmet_keywords):
+                    helmet_detected = True
+                    latest_results.append((name, score, bounding_poly))
+                    print(f"Helmet detected: {name} with confidence {score:.2f}")
+
+            if not helmet_detected:
+                print("No helmet detected in this frame.")
     except Exception as e:
-        print(f"Error processing frame: {e}")
+        print(f"Error processing the frame: {e}")
 
 
 def display_results(frame):
     """Displays the results on the frame."""
     with lock:
-        for i, (name, score) in enumerate(latest_results):
-            text = f"{name}: {score:.2f}"
-            cv2.putText(frame, text, (10, 30 + i * 30), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
+        for name, score, bounding_poly in latest_results:
+            if any(keyword in name.lower() for keyword in helmet_keywords):
+                 # Draw the helmet rectangle
+                vertices = bounding_poly.normalized_vertices
+                height, width, _ = frame.shape
+                start_point = (int(vertices[0].x * width), int(vertices[0].y * height))
+                end_point = (int(vertices[2].x * width), int(vertices[2].y * height))
+                cv2.rectangle(frame, start_point, end_point, (0, 255, 0), 2)
+
+                # Add the label
+                label = f"{name}: {score:.2f}"
+                cv2.putText(
+                    frame, label, (start_point[0], start_point[1] - 10),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2
+                )
+
 
 
 # Video capture
