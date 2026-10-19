@@ -5,12 +5,33 @@ Script en Python que captura video desde una cámara, envía cuadros a la API Go
 ![Python](https://img.shields.io/badge/Python-3.9-3776AB?style=flat&logo=python&logoColor=white)
 ![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white)
 ![Google Cloud Vision](https://img.shields.io/badge/Google%20Cloud-Vision%20API-4285F4?style=flat&logo=googlecloud&logoColor=white)
+![Estado](https://img.shields.io/badge/estado-terminado-blue?style=flat)
 ![Licencia](https://img.shields.io/badge/licencia-Apache--2.0-blue?style=flat)
 ![Último commit](https://img.shields.io/github/last-commit/ViceAguilera/script-detector-google-vision-api?style=flat)
+
+<!-- Demo: agrega una captura o GIF en docs/demo.gif y descomenta la línea siguiente -->
+<!-- <p align="center"><img src="docs/demo.gif" alt="Demostración del detector con Google Cloud Vision" width="800"></p> -->
+
+## Tabla de contenidos
+
+- [Descripción](#descripción)
+- [Estado del proyecto](#estado-del-proyecto)
+- [Características](#características)
+- [Tecnologías](#tecnologías)
+- [Requisitos](#requisitos)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Estructura del proyecto](#estructura-del-proyecto)
+- [Licencia](#licencia)
+- [Autor](#autor)
 
 ## Descripción
 
 El script abre la cámara con OpenCV y, cada 10 cuadros, envía una imagen en un hilo aparte al servicio de localización de objetos de Google Cloud Vision. Los nombres y puntuaciones de confianza más recientes se dibujan sobre el video en vivo, de modo que la interfaz no se bloquea mientras se espera la respuesta de la API.
+
+## Estado del proyecto
+
+**Terminado.** Script completo y funcional que no recibe mantenimiento activo.
 
 ## Características
 
@@ -72,8 +93,6 @@ credentials/       # Aquí va tu clave JSON de Google Cloud (no se versiona)
 
 Distribuido bajo la licencia Apache 2.0. Ver [LICENSE](LICENSE).
 
-## Autores
+## Autor
 
 **Vicente Aguilera Arias** — [Portafolio](https://portfolio.iamsirius.cl) · [GitHub](https://github.com/ViceAguilera) · [LinkedIn](https://www.linkedin.com/in/vicenteaguilera/)
-
-Colaborador: [Camilo Sáez Garrido](https://github.com/camjasaez)
