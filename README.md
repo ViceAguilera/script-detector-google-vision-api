@@ -23,7 +23,7 @@ Script en Python que captura video desde una cámara, envía cuadros a la API Go
 - [Uso](#uso)
 - [Estructura del proyecto](#estructura-del-proyecto)
 - [Licencia](#licencia)
-- [Autor](#autor)
+- [Autores](#autores)
 
 ## Descripción
 
@@ -93,6 +93,8 @@ credentials/       # Aquí va tu clave JSON de Google Cloud (no se versiona)
 
 Distribuido bajo la licencia Apache 2.0. Ver [LICENSE](LICENSE).
 
-## Autor
+## Autores
 
 **Vicente Aguilera Arias** — [Portafolio](https://portfolio.iamsirius.cl) · [GitHub](https://github.com/ViceAguilera) · [LinkedIn](https://www.linkedin.com/in/vicenteaguilera/)
+
+Colaborador: [Camilo Sáez Garrido](https://github.com/camjasaez)
