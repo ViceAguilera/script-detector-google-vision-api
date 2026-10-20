@@ -175,3 +175,8 @@ cython_debug/
 # Credenciales de Google Cloud (nunca versionar)
 credentials/*.json
 !credentials/.gitkeep
+
+# Archivos de asistentes de IA
+.claude/
+CLAUDE.md
+AGENTS.md
